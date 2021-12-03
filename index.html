@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        #mySoundClip:hover{
+            background-color:green;
+    
+        }
+        * {
+            margin: 0;
+            padding: 0;
+          }
+          
+          html{
+            /* for scrolling */
+            scroll-behavior: smooth;
+          }
+          
+          /* Css Variables */
+          :root {
+            --navbar-height: 69px;
+          }
+          /* Navigationbar */
+          #navbar {
+            display: flex;
+            align-items: center;
+            position: sticky; 
+            top: 0px;
+            
+            /* relative krle small amound jaiga nibe but we use absoulate */
+          }
+          
+          
+          #navbar::before{
+            content: "";
+            background-color: black;
+            position:absolute;
+            top:0px;
+            left:0px;
+            height:100%;
+            width:100%;
+            z-index: -1;
+            opacity: 0.7;
+          }
+          #logo{
+
+            margin: 10px 34px;
+         }
+         #logo img{
+           height: 68px;
+           margin: 2px 10px;
+         }
+         
+         /*  Navigationbar:List Styling */
+         #navbar ul{
+           display: flex;
+           font-family: 'Baloo Bhai', cursive;
+         }
+         
+         
+         #navbar ul li{
+           /* color: white; */
+           list-style: none;
+           font-size: 1.3rem;
+         }
+         
+         #navbar ul li a{
+           /* because by default inline-block */
+           display: block;
+           padding:3px 22px;
+           border-radius: 20px;
+           /* anker a er nicer line asbe na */
+           text-decoration: none; 
+           color:white;
+         }
+         #navbar ul li a:hover{
+          color:black;
+          background-color: white;
+         }
+         
+          
+    </style>
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="foodfino.png" alt="Myonlinemiles.com" srcset="">
+        </div>
+        <ul>
+            <li class="item"><a href="#home"  onclick ="PlaySound('mySound')" 
+                >Home</a></li>
+            <li class="item"><a href="#services-container">Services</a></li>
+            <li class="item"><a href="#client-section">Our Clients</a></li>
+            <li class="item"><a href="#contact">Contact Us</a></li>
+
+        </ul>
+    </nav>
+
+    <audio src="audio/aud3.m4a" id="my_audio" loop="loop" autoplay="autoplay"></audio>
+
+<section id="home" >
+<h1>Home</h1>
+
+<p>Click on the play button to play a sound:</p>
+
+<p>Hover Over Me To Play</p>
+
+<audio id='mySound' src='audio/aud1.m4a'>
+</section>
+
+
+<section id="services-container">
+    <h1>About us</h1>
+    
+    <p>Click on the play button to play a sound:</p>
+    <p>lorem55</p>
+    <p onmouseover="PlaySound('mySound')" 
+        onmouseout="StopSound('mySound')">Hover Over Me To Play</p>
+    
+    <audio id='mySound' src='audio/aud1.m4a'>
+    </section>
+    
+    <script>
+  
+        // or with an ID
+        window.onload=function(){
+            document.getElementById("my_audio").play();
+          }
+        function PlaySound(soundobj) {
+            var thissound=document.getElementById(soundobj);
+            thissound.play();
+        }
+        
+        function StopSound(soundobj) {
+            var thissound=document.getElementById(soundobj);
+            thissound.pause();
+            thissound.currentTime = 0;
+        }
+        </script>
+</body>
+
+</html>
